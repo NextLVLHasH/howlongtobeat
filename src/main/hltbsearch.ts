@@ -115,7 +115,7 @@ export class HltbSearch {
       return result.data;
     } catch (error) {
       if (error.response && error.response.status) {
-        throw new Error(`Got non-200 status code from howlongtobeat.com [${error.response.status}]`);
+        throw new Error(`Got non-200 status code from howlongtobeat.com for game ${gameId} [${error.response.status}]`);
       }
       throw error;
     }
@@ -138,8 +138,8 @@ export class HltbSearch {
           headers: {
             'User-Agent': userAgent,
             'content-type': 'application/json',
-            'origin': 'https://howlongtobeat.com/',
-            'referer': 'https://howlongtobeat.com/',
+            'origin': 'https://howlongtobeat.com',
+            'referer': 'https://howlongtobeat.com',
             'x-auth-token': token,
             'x-hp-key': hpKey,
             'x-hp-val': hpVal,
@@ -155,7 +155,7 @@ export class HltbSearch {
         return this._doSearch(query, signal, true);
       }
       if (error.response && error.response.status) {
-        throw new Error(`Got non-200 status code from howlongtobeat.com [${error.response.status}]`);
+        throw new Error(`Got non-200 status code from howlongtobeat.com for search [${query.join(' ')}] [${error.response.status}]`);
       }
       throw error;
     }

@@ -122,7 +122,11 @@ export class HowLongToBeatParser {
     gameName = $('div[class*=profile_header] div[class*=profile_header]').first().text().trim();
     imageUrl = $('div[class*=game_image] img').first().attr('src') || '';
 
+    // New site uses div.stat elements, old site used li elements
     let statElements = $('div[class*=GameStats][class*=game_times] div[class*=stat]');
+    if (statElements.length === 0) {
+      statElements = $('div[class*=GameStats][class*=game_times] li');
+    }
     const gameDescription = $(
       'div[class*=GameSummary][class*=large]'
     ).text();

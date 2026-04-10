@@ -1,14 +1,43 @@
 # howlongtobeat API
 
-[![Latest Build Status](https://api.travis-ci.org/ckatzorke/howlongtobeat.svg?branch=master)](https://travis-ci.org/ckatzorke/howlongtobeat)
+[![Build and Test](https://github.com/NextLVLHasH/howlongtobeat/actions/workflows/build.yml/badge.svg)](https://github.com/NextLVLHasH/howlongtobeat/actions/workflows/build.yml)
 [![npm version](https://badge.fury.io/js/howlongtobeat.svg)](https://badge.fury.io/js/howlongtobeat)
-[![codecov](https://codecov.io/gh/ckatzorke/howlongtobeat/branch/master/graph/badge.svg)](https://codecov.io/gh/ckatzorke/howlongtobeat)
+[![codecov](https://codecov.io/gh/NextLVLHasH/howlongtobeat/branch/master/graph/badge.svg)](https://codecov.io/gh/NextLVLHasH/howlongtobeat)
 
 ## Version
 
 - Current version: 1.9.0
 - Upgrade: 1.8.x -> 1.9.0
 - Validation status: 17/17 tests passing (unit + integration)
+
+## Release
+
+This project uses a tag-based GitHub Release workflow.
+
+- Workflow: `.github/workflows/release.yml`
+- Release notes source: `RELEASE.md`
+- Tag format: `vX.Y.Z`
+- Tag version must match `package.json` version
+
+### Use the latest release
+
+```bash
+npm install howlongtobeat@^1.9.0
+```
+
+You can also download tagged source snapshots from the GitHub Releases page.
+
+### Create a new release (maintainers)
+
+1. Update `package.json` version.
+2. Update `RELEASE.md` notes.
+3. Commit and push changes.
+4. Create and push a matching tag.
+
+```bash
+git tag v1.9.0
+git push origin v1.9.0
+```
 
 ## About
 
@@ -125,9 +154,11 @@ Example result:
 }
 ```
 
-## Version 1.9.0 Upgrade Notes
+## Release Notes
 
-The 1.9.0 update aligns the library with the current HowLongToBeat request flow.
+Current release notes are tracked in `RELEASE.md`.
+
+1.9.0 highlights:
 
 - Updated search flow to use `/api/find/init` + `/api/find`
 - Added required auth and honeypot headers/fields for search requests
@@ -136,7 +167,6 @@ The 1.9.0 update aligns the library with the current HowLongToBeat request flow.
 - Added numeric `gameId` validation to prevent URL injection / SSRF-style inputs
 - Added `AbortSignal` support to `search()` and `detail()`
 - Kept backward compatibility for `playableOn` while exposing `platforms`
-- Confirmed compatibility with both old fixture HTML and live HLTB responses
 
 ## Testing
 
